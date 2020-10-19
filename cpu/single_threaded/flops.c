@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <time.h>
+#include "logger.h"
 #define ITERS 500000000
 
 #define FLOAT_CONST_1 5468.56506
@@ -18,8 +19,10 @@ int main()
 	f1 = FLOAT_CONST_1;
 	f2 = FLOAT_CONST_2;
 	f3 = FLOAT_CONST_3;
+
+	logger("--FLOPS Estimator (Single threaded)--\n\n");
 	
-	printf("--FLOPS Estimator (Single threaded)--\n\n");
+	// printf("--FLOPS Estimator (Single threaded)--\n\n");
 	
 	while(1)
 	{
@@ -45,7 +48,7 @@ int main()
 			continue;
 			
 		curr_flops = (2.0*(double)ITERS)/time_taken; //since two operations per cycle
-		printf("%f secs\t%f flops\n", time_taken, curr_flops);
+		logger("%f secs\t%f flops\n", time_taken, curr_flops);
 	}
 	
 	return 0;
